@@ -136,7 +136,7 @@ FROM #PercentPopulationVaccinated
 
 
 --Creating View to store data for later visualizations
---DROP View IF EXISTS PercentPopulationVaccinated
+
 Create View PPercentPopulationVaccinated as 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
 SUM(CONVERT(bigint,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.date) as RollingPeopleVaccinated
